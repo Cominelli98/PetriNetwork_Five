@@ -18,7 +18,7 @@ public final class Menu_Visua {
 	private static final String NO_RETI_P = "Non ci sono reti pnp da visualizzare";
 	
 	/**
-	 * Stampa a video elenco di posti, transizioni, link e reti complessive
+	 * Menu di visualizzazione di una rete
 	 */
 	public static void netViewer(ArrayList<Network> ns) {
 		if(ns.size() == 0) {
@@ -35,19 +35,19 @@ public final class Menu_Visua {
 			select = Utility.readLimitedInt(0, MENUVISUALIZZA.length-4);
 			
 			switch(select) {
-			case 1:
+			case 1:	//Visualizza l'elenco delle locatione di una rete
 				System.out.println("ELENCO LOCATIONS:");
 				System.out.println(ns.get(i).getLocationsList());
 				break;
-			case 2:
+			case 2:	//Visualizza l'elenco delle transition di una rete
 				System.out.println("ELENCO TRANSITIONS:");
 				System.out.println(ns.get(i).getTransitionsList());
 				break;
-			case 3:
+			case 3:	//Visualizza l'elenco dei link di una rete
 				System.out.println("ELENCO LINKS:");
 				System.out.println(ns.get(i).getLinksList());
 				break;
-			case 4:
+			case 4:	//Visualizza la rete complessiva
 				System.out.println("ELENCO LOCATIONS:");
 				System.out.println(ns.get(i).getLocationsList());
 				System.out.println("ELENCO TRANSITIONS:");
@@ -55,15 +55,17 @@ public final class Menu_Visua {
 				System.out.println("ELENCO LINKS:");
 				System.out.println(ns.get(i).getLinksList());
 				break;
-			case 0:
+			case 0:	//indietro
 				break;
 			}
 		}while (select != 0);
-		
 	}
 	
-	
-	
+	/**
+	 * Crea un elenco numerato di tutte reti a seconda che sia una rete, PN o PNp
+	 * @param ns
+	 * @return
+	 */
 	public static StringBuffer getNetworksList(ArrayList<Network> ns ){
 		StringBuffer s = new StringBuffer("");
 		int i = 0;
@@ -72,9 +74,11 @@ public final class Menu_Visua {
 		}
 		return s;
 	}
-
-
 	
+	/**
+	 * Menu di visualizzazione di una rete di petri 
+	 * @param pn
+	 */
 	public static void petriNetViewer(ArrayList<Petri_network> pn) {
 		if(pn.size() == 0) {
 			System.out.println(NO_RETI_P);
@@ -90,28 +94,32 @@ public final class Menu_Visua {
 			select = Utility.readLimitedInt(0, MENUVISUALIZZA.length-4);
 			
 			switch(select) {
-			case 1:
+			case 1:	//Visualizza l'elenco delle location di una rete di petri
 				System.out.println("ELENCO LOCATIONS:");
 				System.out.println(pn.get(i).getLocationsList());
 				break;
-			case 2:
+			case 2:	//Visualizza l'elenco delle transition di una rete di petri
 				System.out.println("ELENCO TRANSITIONS:");
 				System.out.println(pn.get(i).getTransitionsList());
 				break;
-			case 3:
+			case 3:	//Visualizza l'elenco dei link di una rete di petri
 				System.out.println("ELENCO LINKS:");
 				System.out.println(pn.get(i).getLinksList());
 				break;
-			case 4:
+			case 4: //Visualizza la rete di petri complessiva
 				printPetriNet(pn.get(i));
 				break;
-			case 0:
+			case 0:	// indietro
 				break;
 			}
 		}while (select != 0);
 		
 	}
 	
+	/**
+	 * Menu di visualizzazione di una rete di petri con priorità
+	 * @param pnp
+	 */
 	public static void pnpViewer(ArrayList<Priority_network> pnp) {
 		if(pnp.size() == 0) {
 			System.out.println(NO_RETI_PNP);
@@ -126,31 +134,29 @@ public final class Menu_Visua {
 				System.out.println(s);
 			select = Utility.readLimitedInt(0, MENUVISUALIZZA.length-4);
 			
-			switch(select) {
-			case 1:
+			switch(select) {	
+			case 1:	//Visualizza l'elenco delle location di una rete di petri con priorità
 				System.out.println("ELENCO LOCATIONS:");
 				System.out.println(pnp.get(i).getLocationsList());
 				break;
-			case 2:
+			case 2:	//Visualizza l'elenco delle transition di una rete di petri con priorità
 				System.out.println("ELENCO TRANSITIONS:");
 				System.out.println(pnp.get(i).getTransitionsList());
 				break;
-			case 3:
+			case 3:	//Visualizza l'elenco dei link di una rete di petri con priorità
 				System.out.println("ELENCO LINKS:");
 				System.out.println(pnp.get(i).getLinksList());
 				break;
-			case 4:
+			case 4:	//Visualizza la rete di petri con priorità complessiva
 				printPetriNet(pnp.get(i));
 				break;
-			case 0:
+			case 0:	//Indietro
 				break;
 			}
 		}while (select != 0);
 		
 	}
 
-	
-	
 	public static StringBuffer getPNetworksList(ArrayList<Petri_network> pn){
 		StringBuffer f = new StringBuffer("");
 		int i = 0;
@@ -160,7 +166,6 @@ public final class Menu_Visua {
 		return f;
 	}
 
-	
 	public static void printPetriNet(Petri_network pn) {
 		System.out.println("ELENCO LOCATIONS:");
 		System.out.println(pn.getLocationsList());
@@ -170,6 +175,11 @@ public final class Menu_Visua {
 		System.out.println(pn.getLinksList());
 		}
 	
+	/**
+	 * Crea un elenco numerato di tutte le pnp presenti
+	 * @param pnp
+	 * @return StringBuffer f
+	 */
 	public static StringBuffer getPnpList(ArrayList<Priority_network> pnp){
 		StringBuffer f = new StringBuffer("");
 		int i = 0;

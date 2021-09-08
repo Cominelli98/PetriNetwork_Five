@@ -15,8 +15,6 @@ public class Node implements GenericNode{
 		this.nodeName = nodeName;
 	}
 	
-	
-	
 	public int getNetId() {
 		return netId;
 	}
@@ -42,39 +40,17 @@ public class Node implements GenericNode{
 		return nodeName;
 	}
 
-
-
 	@Override
 	public int getValue() {
-		// TODO Auto-generated method stub
 		return -1;
 	}
 
-
-
 	@Override
 	public void addToken(int i) {
-		// TODO Auto-generated method stub
-		
 	}
-
-
 
 	@Override
 	public void reduceToken(int i) {
-		// TODO Auto-generated method stub
 		
 	}
-
-
-
-	/*@Override
-	public int getValue() {
-		return 0;
-	}*/
-	
-
-	
-	
-	
 }

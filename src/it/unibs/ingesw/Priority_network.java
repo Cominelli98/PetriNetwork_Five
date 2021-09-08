@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Priority_network extends Petri_network implements IDNameGiver{
 	
-	static int priorityNetID = 0;
+	static int priorityNetID = 0;	//Variabile statica per assegnare un net diverso ad ogni rete di petri con priorità
 	private int priority_NetID;
 	
 	public Priority_network(Petri_network pn, String name) {

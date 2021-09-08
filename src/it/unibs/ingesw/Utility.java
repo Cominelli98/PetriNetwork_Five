@@ -37,7 +37,7 @@ public final class Utility {
 			i = readInt();
 			if(i>=min && i<= max)
 				finito = true;
-			else System.out.println("valore non compreso tra gli estremi");
+			else System.out.println("valore non compreso tra gli estremi, reinserire:");
 			
 		}while(!finito);
 		return i;
@@ -51,7 +51,7 @@ public final class Utility {
 			i = readInt();
 			if(i>=min)
 				finito = true;
-			else System.out.println("valore inferiore al minimo");
+			else System.out.println("valore inferiore al minimo, reinserire");
 			
 		}while(!finito);
 		return i;

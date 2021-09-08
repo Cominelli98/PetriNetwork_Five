@@ -11,11 +11,16 @@ import com.google.gson.Gson;
 public final class ReadN {
 	
 	private static final int ID_INIZIALE = -1;
-	private static final String FILE_NET = "data.txt";
-	private static final String FILE_PNET = "petri_data.txt";
-	private static final String FILE_PNP = "pnp_data.txt";
+	private static final String FILE_NET = "data.txt";//file in cui vengono salvate le reti base
+	private static final String FILE_PNET = "petri_data.txt";//file in cui vengono salvate le reti di petri
+	private static final String FILE_PNP = "pnp_data.txt";//file in cui vengono salvare le reti pnp
 
-	
+	/**
+	 * prende in ingresso una stringa e la converte in un oggetto della classe c
+	 * @param s string: stringa da convertire
+	 * @param c Class: classe in cui viene convertita
+	 * @return oggetto della classe c
+	 */
 	public static Object jsonToObject(String s, Class c ) {
 		Gson gson = new Gson();
 		return gson.fromJson(s,c);
@@ -37,6 +42,13 @@ public final class ReadN {
 		
 	}
 	
+	/**
+	 * legge l'intero file e riìestituisce un arrayList in cui ogni stringa rappresenta una riga nel file, e quindi un oggetto 
+	 * @param c classe, serve per scegliere quale file andare a leggere
+	 * @return ArrayList<String>
+	 * @throws FileNotFoundException
+	 * @throws IllegalArgumentException: classe non valida
+	 */
 	public static ArrayList<String> readFile(Class c)throws FileNotFoundException, IllegalArgumentException {
 		String data;
 		if (c == Network.class) 
@@ -62,6 +74,12 @@ public final class ReadN {
 		return lines;
 	}
 	
+	
+	/**
+	 * legge e retituisce tutti gli id delle reti salvate sul file
+	 * @param c :classe per scegliere quale file leggere
+	 * @return
+	 */
 	public static ArrayList<Integer> getNetIDsFromFile(Class c) {
 		ArrayList<Integer> IDs = new ArrayList<>();
 		try {
@@ -76,7 +94,12 @@ public final class ReadN {
 		}
 		return IDs;
 	}
-	
+	/**
+	 * controlla se l'id della rete e già presente nel file, quindi se la rete è già salvata
+	 * @param id della rete da controllare 	
+	 * @param c classe per scegliere il file da controllare
+	 * @return
+	 */
 	public static boolean checkIdExistence(int id, Class c) {
 		for (Integer intero : getNetIDsFromFile(c))
 			if(intero == id)
@@ -84,7 +107,11 @@ public final class ReadN {
 		return false;
 	}
 	
-	
+	/**
+	 * legge e restituisce una lista di tutti i nome delle reti salvare su file
+	 * @param c :classe per scegliere quale file leggere 
+	 * @return StringBuffer
+	 */
 	public static StringBuffer getNetNamesList(Class c) {
 		StringBuffer names = new StringBuffer();
 		try {
@@ -102,6 +129,13 @@ public final class ReadN {
 		return names;
 	}
 	
+	/**
+	 * restituisce un arrayList con tutti i nomi delle reti sul file
+	 * @param c classe per scegliere quale file controllare 
+	 * @return Array di nomi
+	 * @throws FileNotFoundException
+	 * @throws IllegalArgumentException
+	 */
 	public static ArrayList<String> getNames(Class c) throws FileNotFoundException, IllegalArgumentException {
 		ArrayList<String> nets = readFile(c);
 		ArrayList<String> names = new ArrayList<>();
@@ -112,6 +146,13 @@ public final class ReadN {
 		return names;
 	}
 	
+	/**
+	 * controlla se il nome appartiene già ad un altra rete
+	 * @param name nome da controllare
+	 * @param c classe per scegliere il file
+	 * @return vero se una rete ha già quel nome, falso altrimenti
+	 * @throws FileNotFoundException
+	 */
 	public static boolean checkNetNameExistence(String name, Class c) throws FileNotFoundException{
 		for (String string : getNames(c)) {
 			if (name.toUpperCase().equals(string.toUpperCase()))

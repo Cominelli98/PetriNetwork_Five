@@ -49,13 +49,13 @@ public final class Menu {
 			
 			select = Utility.readLimitedInt(0, MENUSTART.length-4);
 			switch (select) {
-				case 1:
+				case 1:	//Collegamento con il menù configuratore
 					Menu_configuratore.configuratore();
 					break;
-				case 2:
+				case 2:	//Collegamento con il menù fruitore
 					Menu_fruitore.menuFriutore();
 					break;
-				case 0:
+				case 0:	//Uscita dal programma
 					Utility.close();
 					break;
 			}
@@ -63,6 +63,9 @@ public final class Menu {
 		
 	}
 	
+	/**
+	 * Metodo che carica da file tutte le reti create e salvate
+	 */
 	public void loadSavedNets() {
 		ArrayList<String> n = new ArrayList<String>();
 		ArrayList<String> pn = new ArrayList<String>();

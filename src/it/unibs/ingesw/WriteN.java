@@ -15,38 +15,11 @@ public final class WriteN {
 	private static final String FILE_NET = "data.txt";
 	private static final String FILE_PNET = "petri_data.txt";
 	private static final String FILE_PNP = "pnp_data.txt";
-
 	
-	
-	/*public static void save(Network net) {
-		Gson gson = new Gson();
-		File data = new File("data.txt");
-		boolean exist = data.exists();
-		
-		try (FileWriter f = new FileWriter(data, exist)){
-			
-			f.append(gson.toJson(net, net.getClass())+"\n");
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println(SAVE_ERROR);
-		}
-		
-	}
-	
-	public static void save(Petri_network pNet) {
-		Gson gson = new Gson();
-		File data = new File("petri_data.txt");
-		boolean exist = data.exists();
-		
-		try (FileWriter f = new FileWriter(data, exist)){
-			
-			f.append(gson.toJson(pNet, pNet.getClass())+"\n");
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println(SAVE_ERROR);
-		}
-	}*/
-	
+	/**
+	 * prende in ingresso un oggetto IDNameGiver e si occupa di salvarlo nel corretto file in base alla sua natura
+	 * @param net
+	 */
 	public static void save(IDNameGiver net) {
 		Gson gson = new Gson();
 		String data;
@@ -70,6 +43,10 @@ public final class WriteN {
 		}
 	}
 	
+	
+	/**
+	 * controlla che i file dove salvare le reti esistano, in caso negativo procede alla creazione 
+	 */
 	public static void fileCreation() {
 		
 		File f = new File("data.txt");

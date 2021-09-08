@@ -9,13 +9,15 @@ public class Simulatore {
 	
 	public Simulatore (Petri_network rete) {
 		this.rete = rete;
-
 	}
 	
 	public Simulatore (Priority_network pnp) {
 		this.rete = pnp;
 	}
 	
+	/**
+	 * Metodo fa visualizzare al fruitore lo step successivo di una marcatura di una rete di petri o di una rete di petri con priorità
+	 */
 	public void nextStep(){
 		ArrayList<Petri_transition> transizioniAttivabili = topPriorityTransitions();
 		int possibili = transizioniAttivabili.size();
@@ -37,7 +39,9 @@ public class Simulatore {
 		}
 	}
 	
-	
+	/**
+	 * Stampa tutte le transizioni attivabili in una data marcatura
+	 */
 	private void stampAttivabili() {
 		ArrayList<Petri_transition> transizioni = topPriorityTransitions();
 		System.out.println("Lista transizioni attivabili:");
@@ -46,7 +50,10 @@ public class Simulatore {
 		}
 	}
 	
-	//TUTTE LE TRANSIZIONI ATTIVABILI CON PRIORITA MASSIMA
+	/**
+	 * Ritorna un arrayList contenente tutte le transizioni attivabili con priorità maggiore
+	 * @return ArrayList<Petri_transition> risultato
+	 */
 	private ArrayList<Petri_transition> topPriorityTransitions(){
 		ArrayList<Petri_transition> risultato = new ArrayList<>();
 		int topP = 1;
@@ -63,7 +70,10 @@ public class Simulatore {
 	}
 	
 	
-	//TUTTE LE TRANSIZIONI ATTIVABILI PERCHE HANNO TOKEN SUFFICIENTI LE LOCATION VICINE
+	/**
+	 * Ritorna un arrayList contenente tutte le transazioni attivabili 
+	 * @return
+	 */
 	private ArrayList<Petri_transition> transAttivabili(){
 		ArrayList<Petri_transition> risultato = new ArrayList<>();
 		
@@ -74,6 +84,11 @@ public class Simulatore {
 		return risultato;
 	}
 	
+	/**
+	 * Valuta se una data transition è attivabile
+	 * @param pt
+	 * @return boolean
+	 */
 	private boolean attivabile (Petri_transition pt) {
 		boolean exist = checkIfOneLinkExistWithTrans(pt);
 		int x;
@@ -91,9 +106,9 @@ public class Simulatore {
 	}
 	
 	/**
-	 * 
-	 * @param pt la transizione da andare a controllare
-	 * @return un booleano che dice se almeno un link ha come destinazione la transizione
+	 * Controlla che la transizione in ingresso sia una destinazione in un link
+	 * @param pt
+	 * @return boolean
 	 */
 	private boolean checkIfOneLinkExistWithTrans(Petri_transition pt) {
 		for(int i = 0; i< rete.getLinks().size(); i++) {
@@ -104,8 +119,8 @@ public class Simulatore {
 	}
 
 	private void modificaToken(Petri_transition pt) {
-		rete.reduceToken(pt.getId(), pt.getValue());;
-		rete.addToken(pt.getId(), 1);	//viene passato 1 perchè per ora è il valore di default
+		rete.reduceToken(pt.getId(), pt.getValue());
+		rete.addToken(pt.getId(), 1);
 	}
 	
 	private int getIndexOfLocation(int toFind) {
@@ -114,35 +129,6 @@ public class Simulatore {
 				return i;
 		}
 		return 0;
-	}
-	
-	
-	/**
-	 * metodo che ritorna true se tra le transition c'è un pareggio tra le transition con priorità maggiore
-	 * @param attivabili transition che sono attivabili
-	 * @return se c'è o meno un pareggio
-	 */
-	private boolean checkPrioritiesDraw(ArrayList<Petri_transition> attivabili) {
-		ArrayList<Integer> priorities = getPriorities(attivabili);
-		int max = Utility.getMax(priorities);
-		int temp = 0;
-		for(Integer priority : priorities) {
-			if(max == priority)
-					temp++;
-		}	
-		if(temp >= 2)
-				return true;
-		return false;
-	}
-	
-	private ArrayList<Petri_transition> getDraw(ArrayList<Petri_transition> attivabili){
-		ArrayList<Integer> priorities = getPriorities(attivabili);
-		int max = Utility.getMax(priorities);
-		for(int i = 0 ; i < attivabili.size() ; i++) {
-			if(attivabili.get(i).getNetId() != max)
-				attivabili.remove(i);
-		}
-		return attivabili;
 	}
 	
 	private ArrayList<Integer> getPriorities(ArrayList<Petri_transition> attivabili){

@@ -53,79 +53,91 @@ public final class Menu_configuratore {
 	private static final String PADRE_P_NON_PRESENTE = "rete di petri padre non presente";
 	private static final String GIA_PRESENTE = "già presente";
 	
+	/**
+	 * Menù principale per la gestione e l'uso del configuratore
+	 */
 	public static void configuratore() {
 		int select = -1;
 		do {
 			printMenu(MENU_CONFIGURATORE);
 			select = Utility.readLimitedInt(0, MENU_CONFIGURATORE.length-4);
 			switch(select) {
-			case 1:
+			case 1:	//Crea una nuova rete
 				Menu_Reti.createNetwork(Menu.getCurrentNetwork(), Menu.getNetworks());
 				break;
-			case 2:
+			case 2:	//Crea una nuova rete di petri
 				Menu_Petri.createPetri(Menu.getPetriNetworks(), Menu.getNetworks());
 				break;
-			case 3:
+			case 3:	//Crea una nuova rete di petri priorizzata
 				Menu_Pnp.createPnp(Menu.getPriorityNetworks(), Menu.getPetriNetworks(), Menu.getNetworks());
 				break;
-			case 4:
+			case 4:	//Collegamento al menu di visualizzazione
 				visualizationOption();
 				break;
-			case 5:
+			case 5:	//collegamente al menu di salvataggio
 				saveOption();
 				break;
-			case 6:
+			case 6:	//collegamento al menu di importazione
 				loadOption();
 				break;
-			case 0:
+			case 0:	//Uscita
 				break;
 			}
 		}while(select != 0);
 	}
 	
+	/**
+	 * Menu di salvataggio
+	 */
 	private static void saveOption() {
 		int select = -1;
 		do {
 			printMenu(SCELTA_SALVATAGGIO);
 			select = Utility.readLimitedInt(0, SCELTA_SALVATAGGIO.length-4);
 			switch(select) {
-			case 1:
+			case 1:	//Collegamento al menu di salvataggio delle reti
 				Menu_Salva.saveOption(Menu.getNetworks());
 				break;
-			case 2:
+			case 2:	//Collegamento al menu di salvataggio delle reti di petri
 				Menu_Salva.pSaveOption(Menu.getPetriNetworks());
 				break;
-			case 3:
+			case 3:	//Collegamento al menu di salvataggio delle reti di petri priorizzate
 				Menu_Salva.pnpSaveOption(Menu.getPriorityNetworks());
 				break;
-			case 0:
+			case 0:	//Indietro
 				break;
 			}
 		}while(select != 0);
 	}
 
+	/**
+	 * Menu di visualizzazione
+	 */
 	private static void visualizationOption() {
 		int select = -1;
 		do {
 			printMenu(SCELTA_VISUALIZZAZIONE);
 			select = Utility.readLimitedInt(0, SCELTA_VISUALIZZAZIONE.length-4);
 			switch(select) {
-			case 1:
+			case 1:	//Collegamento al menu di visualizzazione delle reti
 				 Menu_Visua.netViewer(Menu.getNetworks());
 				break;
-			case 2:
+			case 2:	//Collegamento al menu di visualizzazione delle reti di petri
 				 Menu_Visua.petriNetViewer(Menu.getPetriNetworks());
 				break;
-			case 3:
+			case 3:	//Collegamento al menu di visualizzazione delle reti di petri priorizzate
 				 Menu_Visua.pnpViewer(Menu.getPriorityNetworks());
 				break;
-			case 0:
+			case 0:	//Indietro
 				break;
 			}
 		}while(select != 0);
 		
 	}
 	
+	/**
+	 * Menù di importazione
+	 */
 	private static void loadOption() {
 		int select = -1;
 		do {
@@ -133,7 +145,7 @@ public final class Menu_configuratore {
 			select = Utility.readLimitedInt(0, SCELTA_VISUALIZZAZIONE.length-4);
 			try {
 				switch(select) {
-				case 1:
+				case 1:	//Importazione di una rete
 					System.out.println(SOURCE);
 					Network n = load(Network.class, Utility.readString());
 					if(!checkLoadedValidity(n)) {
@@ -143,7 +155,7 @@ public final class Menu_configuratore {
 					Menu.addNetwork(n);
 					System.out.println("rete "+n.getName()+" aggiunta");
 					break;
-				case 2:
+				case 2:	//Importazione di una rete di petri
 					System.out.println(SOURCE);
 					Petri_network pn = load(Petri_network.class, Utility.readString());
 					if(!checkLoadedValidity(pn)) {
@@ -153,7 +165,7 @@ public final class Menu_configuratore {
 					Menu.addPetriNetwork(pn);
 					System.out.println("rete di petri "+pn.getName()+" aggiunta");
 					break;
-				case 3:
+				case 3:	//Importazione di una rete di petri priorizzata
 					System.out.println(SOURCE);
 					Priority_network pnp = load(Priority_network.class, Utility.readString());
 					if(!checkLoadedValidity(pnp)) {
@@ -163,7 +175,7 @@ public final class Menu_configuratore {
 					Menu.addPNPNetwork(pnp);
 					System.out.println("rete "+pnp.getName()+" aggiunta");
 					break;
-				case 0:
+				case 0:	//Indietro
 					break;
 				}
 			}
@@ -177,6 +189,15 @@ public final class Menu_configuratore {
 		}while(select != 0);
 	} 
 	
+	/**
+	 * Riconosce e carica un oggetto IDNameGiver specificato dal file 
+	 * @param <T>
+	 * @param c
+	 * @param source
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	private static <T extends IDNameGiver> T  load(Class c, String source) throws FileNotFoundException, IOException {
 		try {
 			return (T) ReadN.loadFromSource(c, source);
@@ -193,6 +214,11 @@ public final class Menu_configuratore {
 			System.out.println(s);
 	}
 	
+	/**
+	 * Controlla se la network in ingresso dal file è valida
+	 * @param n
+	 * @return boolean
+	 */
 	private static boolean checkLoadedValidity(Network n) {
 		if(n.getLocations() == null || n.getTransitions() == null || n.getNetLinks() == null)
 			return false;
@@ -203,6 +229,11 @@ public final class Menu_configuratore {
 		return true;
 	}
 	
+	/**
+	 * Controlla se la rete di petri in ingresso dal file è valida
+	 * @param pn
+	 * @return boolean
+	 */
 	private static boolean checkLoadedValidity(Petri_network pn) {
 		if(pn.getLocations() == null || pn.getTransitions() == null || pn.getLinks() == null)
 			return false;
@@ -221,6 +252,11 @@ public final class Menu_configuratore {
 		return true;
 	}
 	
+	/**
+	 * Controlla se la rete di petri priorizzata in ingresso dal file è valida
+	 * @param pnp
+	 * @return boolean
+	 */
 	private static boolean checkLoadedValidity(Priority_network pnp) {
 		if(pnp.getLocations() == null || pnp.getTransitions() == null || pnp.getLinks() == null)
 			return false;

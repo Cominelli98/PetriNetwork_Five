@@ -10,8 +10,8 @@ public class Network implements IDNameGiver{
 	private ArrayList<Link> netLinks;
 	private int netId; 
 	private String name;
-	static int network_id = 0;
-	private final int OFFSET = 10000;
+	static int network_id = 0;			//Variabile statica che fornisce un id diverso ogni qualvolta si crea una rete
+	private final int OFFSET = 10000;	//Costante che viene sommata all'id di un node nel caso quest'ultimo sia una location
 	
 	public Network (String name) {
 		locations = new ArrayList<Location>();
@@ -22,7 +22,7 @@ public class Network implements IDNameGiver{
 	}
 
 	public void addLocation (String name) {
-		locations.add(new Location(netId, locations.size()+OFFSET /*da cambiare se voglio aggiungere la rimozione*/, name));
+		locations.add(new Location(netId, locations.size()+OFFSET, name));
 	}
 
 
@@ -33,20 +33,6 @@ public class Network implements IDNameGiver{
 	public void addLink (Link l) {
 		netLinks.add(l);
 	}
-	/*
-	public void removeLocation (Location l) {
-		locations.remove(l);
-	}
-	
-	public void removeTransition (Transition t) {
-		transitions.remove(t);
-	}
-	
-	public void removeLink (Link l) {
-		netLinks.remove(l);
-	}
-	*/
-	
 	
 	public ArrayList<Location> getLocations() {
 		return locations;
@@ -88,7 +74,10 @@ public class Network implements IDNameGiver{
 		this.netId = netId;
 	}
 	
-	
+	/**
+	 * Produce in uscita la lista delle transizioni con associato un numero
+	 * @return StringBuffer s
+	 */
 	public StringBuffer getTransitionsList() {
 		StringBuffer s = new StringBuffer("");
 		for (int i = 0; i<transitions.size(); i++) {
@@ -97,6 +86,10 @@ public class Network implements IDNameGiver{
 		return s;
 	}
 	
+	/**
+	 * Produce in uscita la lista dei posti con associato un numero 
+	 * @return StringBuffer s
+	 */
 	public StringBuffer getLocationsList() {
 		StringBuffer s = new StringBuffer("");
 		for (int i = 0; i<locations.size(); i++) {
@@ -105,6 +98,10 @@ public class Network implements IDNameGiver{
 		return s;
 	}
 	
+	/**
+	 * Produce in uscita la lista dei link
+	 * @return Stringbuffer s
+	 */
 	public StringBuffer getLinksList() {
 		StringBuffer s = new StringBuffer("");
 		for (int i = 0; i < netLinks.size(); i++) {
@@ -128,6 +125,11 @@ public class Network implements IDNameGiver{
 		this.name = name;
 	}
 	
+	/**
+	 * produce in uscita il nome della location o transition associata all'ID fornito in ingresso al metodo 
+	 * @param int id
+	 * @return String t.getName()
+	 */
 	public String nodeNameFromID(int id) {
 		for(Location l : locations) {
 			if(l.getId() == id)

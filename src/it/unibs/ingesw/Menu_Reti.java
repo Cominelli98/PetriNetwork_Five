@@ -13,9 +13,9 @@ public final class Menu_Reti {
 			"3:Crea link",
 			"0:Indietro",
 			"___________________________"};
-	final static String NOME_GIA_PRESENTE_RETE = "Esiste già una rete con questo nome";
-	final static String NOME_GIA_PRESENTE_LOCATION = "Esiste già una location con questo nome";
-	final static String NOME_GIA_PRESENTE_TRANSITION = "Esiste già una transition con questo nome";
+	final static String NOME_GIA_PRESENTE_RETE = "Esiste già una rete con questo nome, inserisci un altro nome:";
+	final static String NOME_GIA_PRESENTE_LOCATION = "Esiste già una location con questo nome, inserisci un altro nome:";
+	final static String NOME_GIA_PRESENTE_TRANSITION = "Esiste già una transition con questo nome, inserisci un altro nome:";
 	final static String LINK_GIA_PRESENTE = "Link già presente";
 	final static String ASKLINK = "A cosa vuoi collegarla? Inserisci il numero relativo";
 	
@@ -57,7 +57,7 @@ public final class Menu_Reti {
 			int num = -1;
 			switch (select) {
 				
-				case 0:
+				case 0:	//Indietro
 					break;
 				case 1:
 					createLocation(n);
@@ -67,7 +67,7 @@ public final class Menu_Reti {
 					createLink(n.getTransition(num), n.getLastLocation(), n);
 					num = -1;
 					break;
-				case 2:
+				case 2:	//Creazione di una transizione
 					createTransition(n);
 					System.out.println(ASKLINK);
 					System.out.print(n.getLocationsList());
@@ -75,7 +75,7 @@ public final class Menu_Reti {
 					createLink(n.getLastTransition(), n.getLocation(num), n);
 					num = -1;
 					break;
-				case 3:
+				case 3:	//Creazione di un link
 					int loc;
 					int trans;
 					System.out.println("ELENCO LOCATIONS");

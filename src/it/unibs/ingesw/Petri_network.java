@@ -50,6 +50,10 @@ public class Petri_network implements IDNameGiver{
 		return petriNetId;
 	}
 	
+	/**
+	 * Produce un elenco numerato delle transition di una rete
+	 * @return StringBuffer s
+	 */
 	public StringBuffer getTransitionsList() {
 		StringBuffer s = new StringBuffer("");
 		for (int i = 0; i<petriTransitions.size(); i++) {
@@ -58,6 +62,10 @@ public class Petri_network implements IDNameGiver{
 		return s;
 	}
 	
+	/**
+	 * Produce un elenco numerato di location di una rete
+	 * @return StringBuffer s
+	 */
 	public StringBuffer getLocationsList() {
 		StringBuffer s = new StringBuffer("");
 		for (int i = 0; i<petriLocations.size(); i++) {
@@ -66,6 +74,10 @@ public class Petri_network implements IDNameGiver{
 		return s;
 	}
 	
+	/**
+	 * Produce un elenco numerato dei link di una rete
+	 * @return StringBuffer s
+	 */
 	public StringBuffer getLinksList() {
 		StringBuffer s = new StringBuffer("");
 		for (int i = 0; i < petriNetLinks.size(); i++) {
@@ -83,6 +95,11 @@ public class Petri_network implements IDNameGiver{
 		return petriNetId;
 	}
 	
+	/**
+	 * Metodo utilizzato nella simulazione per ridurre di una quantità il numero di token presenti in tutti i precedenti di una transizione
+	 * @param idTransition
+	 * @param quantity
+	 */
 	public void reduceToken(int idTransition, int quantity) {
 		for(Link l : petriNetLinks) {
 			if(l.getTransition() == idTransition && l.getOrientation() == 1) {
@@ -91,6 +108,11 @@ public class Petri_network implements IDNameGiver{
 		}
 	}
 	
+	/**
+	 * Metodo utilizzato nella simulazione per aumentare di una quantità il numero di token in tutti i successori di una transizione
+	 * @param idTransition
+	 * @param quantity
+	 */
 	public void addToken(int idTransition, int quantity) {
 		for(Link l : petriNetLinks) {
 			if(l.getTransition() == idTransition && l.getOrientation() == -1) {
