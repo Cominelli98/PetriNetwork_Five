@@ -39,8 +39,8 @@ public final class Menu_configuratore {
 	private final static String SCELTA_CARICA_DA_FILE[] = {
 			"Scegli cosa fare:",
 			"___________________________",
-			"1:carica un rete",
-			"2:carica un rete di petri",
+			"1:carica una rete",
+			"2:carica una rete di petri",
 			"3:carica una rete di petri priorizzata",
 			"0:Indietro",
 			"___________________________"};

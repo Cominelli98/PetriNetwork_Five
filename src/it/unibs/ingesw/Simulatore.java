@@ -56,7 +56,7 @@ public class Simulatore {
 	 */
 	private ArrayList<Petri_transition> topPriorityTransitions(){
 		ArrayList<Petri_transition> risultato = new ArrayList<>();
-		int topP = 1;
+		int topP = -1;
 		for (Petri_transition pt : transAttivabili()) {
 			if(pt.getPriority() > topP) {
 				topP = pt.getPriority();

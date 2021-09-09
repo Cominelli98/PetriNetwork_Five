@@ -6,7 +6,7 @@ public final class Menu_fruitore {
 			"Scegli cosa fare:",
 			"___________________________",
 			"1:simula una rete di petri",
-			"2:sinula una rete di petri prioritizzata",
+			"2:simula una rete di petri prioritizzata",
 			"0:Indietro",
 			"___________________________"};
 	
