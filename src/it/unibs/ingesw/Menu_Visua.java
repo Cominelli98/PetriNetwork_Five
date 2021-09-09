@@ -14,8 +14,8 @@ public final class Menu_Visua {
 			"0:Indietro",
 			"___________________________"};
 	private static final String NO_RETI = "Non ci sono reti da visualizzare";
-	private static final String NO_RETI_PNP = "Non ci sono reti di petri da visualizzare";
-	private static final String NO_RETI_P = "Non ci sono reti pnp da visualizzare";
+	private static final String NO_RETI_P = "Non ci sono reti di petri da visualizzare";
+	private static final String NO_RETI_PNP = "Non ci sono reti pnp da visualizzare";
 	
 	/**
 	 * Menu di visualizzazione di una rete
