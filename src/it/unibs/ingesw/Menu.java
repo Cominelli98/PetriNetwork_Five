@@ -135,5 +135,47 @@ public final class Menu {
 			IDs.add(pnp.getId());
 		return IDs;
 	}
+	
+	public static ArrayList<Network> getSavedN(){
+		ArrayList<Network> n = new ArrayList<>();
+		ArrayList<String> s = new ArrayList<String>();
+		try {
+			s = ReadN.readFile(Network.class);
+			} catch (FileNotFoundException f) {
+				f.printStackTrace();
+			}
+		for(String net : s) {
+			n.add((Network) ReadN.jsonToObject(net, Network.class));
+		}
+		return n;
+	}
+	
+	public static ArrayList<Petri_network> getSavedPN(){
+		ArrayList<Petri_network> pn = new ArrayList<>();
+		ArrayList<String> s = new ArrayList<String>();
+		try {
+			s = ReadN.readFile(Petri_network.class);
+			} catch (FileNotFoundException f) {
+				f.printStackTrace();
+			}
+		for(String net : s) {
+			pn.add((Petri_network) ReadN.jsonToObject(net, Petri_network.class));
+		}
+		return pn;
+	}
+	
+	public static ArrayList<Priority_network> getSavedPNP(){
+		ArrayList<Priority_network> pnp = new ArrayList<>();
+		ArrayList<String> s = new ArrayList<String>();
+		try {
+			s = ReadN.readFile(Priority_network.class);
+			} catch (FileNotFoundException f) {
+				f.printStackTrace();
+			}
+		for(String net : s) {
+			pnp.add((Priority_network) ReadN.jsonToObject(net, Priority_network.class));
+		}
+		return pnp;
+	}
 }
 	

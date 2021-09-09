@@ -66,10 +66,10 @@ public final class Menu_configuratore {
 				Menu_Reti.createNetwork(Menu.getCurrentNetwork(), Menu.getNetworks());
 				break;
 			case 2:	//Crea una nuova rete di petri
-				Menu_Petri.createPetri(Menu.getPetriNetworks(), Menu.getNetworks());
+				Menu_Petri.createPetri(Menu.getPetriNetworks(), Menu.getSavedN());
 				break;
 			case 3:	//Crea una nuova rete di petri priorizzata
-				Menu_Pnp.createPnp(Menu.getPriorityNetworks(), Menu.getPetriNetworks(), Menu.getNetworks());
+				Menu_Pnp.createPnp(Menu.getPriorityNetworks(), Menu.getSavedPN(), Menu.getNetworks());
 				break;
 			case 4:	//Collegamento al menu di visualizzazione
 				visualizationOption();

@@ -12,8 +12,8 @@ public final class WriteN {
 	
 	
 	public static String SAVE_ERROR = "errore nel salvataggio";
-	private static final String FILE_NET = "data.txt";
-	private static final String FILE_PNET = "petri_data.txt";
+	private static final String FILE_NET = "n_data.txt";
+	private static final String FILE_PNET = "pn_data.txt";
 	private static final String FILE_PNP = "pnp_data.txt";
 	
 	/**
@@ -49,7 +49,7 @@ public final class WriteN {
 	 */
 	public static void fileCreation() {
 		
-		File f = new File("data.txt");
+		File f = new File("n_data.txt");
 		if (!f.exists()) {
 			try {
 				f.createNewFile();
@@ -57,7 +57,7 @@ public final class WriteN {
 				e.printStackTrace();
 			}
 		}
-		File fp = new File("petri_data.txt");
+		File fp = new File("pn_data.txt");
 		if (!fp.exists()) {
 			try {
 				fp.createNewFile();

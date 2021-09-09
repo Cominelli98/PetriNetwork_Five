@@ -104,6 +104,7 @@ public final class Menu_Pnp {
 	 * @param toSet
 	 */
 	private static void setPriorities(Priority_network toSet) {
+		
 		for (Petri_transition pt : toSet.getTransitions()) {
 			System.out.println("Inserisci la priorità della transizione "+pt.getName() + " (1 per default)");
 			pt.setPriority(Utility.readLowLimitInt(1));
@@ -114,6 +115,7 @@ public final class Menu_Pnp {
 	 * Metodo di interazione con il fruitore per simulare una rete di petri priorizzata
 	 */
 	public static void simulaPriorityNet() {
+		
 		ArrayList<String> s = new ArrayList<String>();
 		Simulatore daSimulare;
 		Priority_network rete;

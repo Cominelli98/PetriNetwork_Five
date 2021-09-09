@@ -11,8 +11,8 @@ import com.google.gson.Gson;
 public final class ReadN {
 	
 	private static final int ID_INIZIALE = -1;
-	private static final String FILE_NET = "data.txt";//file in cui vengono salvate le reti base
-	private static final String FILE_PNET = "petri_data.txt";//file in cui vengono salvate le reti di petri
+	private static final String FILE_NET = "n_data.txt";//file in cui vengono salvate le reti base
+	private static final String FILE_PNET = "pn_data.txt";//file in cui vengono salvate le reti di petri
 	private static final String FILE_PNP = "pnp_data.txt";//file in cui vengono salvare le reti pnp
 
 	/**
