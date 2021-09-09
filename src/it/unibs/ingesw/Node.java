@@ -1,7 +1,5 @@
 package it.unibs.ingesw;
 
-import java.util.ArrayList;
-
 public class Node implements GenericNode{
 	
 	private int netId;

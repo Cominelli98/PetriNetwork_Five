@@ -5,16 +5,6 @@ import java.util.ArrayList;
 
 public final class Menu_Petri {
 
-	private final static String MENUPETRI[] = {
-			"Scegli cosa fare:",
-			"___________________________",
-			"1:Crea una rete di Petri a partire da una rete esistente",
-			"2:Visualizza una rete di Petri",
-			"3:Salva una o più reti di Petri",
-			"4:Simula l'evoluzione di una rete di Petri da file",
-			"0:Indietro",
-			"___________________________",
-	};
 	private final static String MESSAGGI_MENU[] = {
 			"da quale rete vuoi partire?",
 			"Come vuoi chiamare questa rete di Petri?",

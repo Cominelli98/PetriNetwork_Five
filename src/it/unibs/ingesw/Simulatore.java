@@ -1,7 +1,6 @@
 package it.unibs.ingesw;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Simulatore {
 
@@ -129,12 +128,5 @@ public class Simulatore {
 				return i;
 		}
 		return 0;
-	}
-	
-	private ArrayList<Integer> getPriorities(ArrayList<Petri_transition> attivabili){
-		ArrayList<Integer> priorities = new ArrayList<>();
-		for(Petri_transition pt : attivabili)
-			priorities.add(pt.getPriority());
-		return priorities;
 	}
 }

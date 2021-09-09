@@ -7,7 +7,7 @@ public final class Menu_Salva {
 	private static final String MENUSALVA[] = {
 			"Scegli cosa fare:",
 			"___________________________",
-			"1:Salva una rete",
+			"1:Salva una rete singola",
 			"2:Salva tutte le reti",
 			"0:Indietro",
 			"___________________________"};

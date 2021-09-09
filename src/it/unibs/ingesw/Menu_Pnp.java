@@ -5,24 +5,12 @@ import java.util.ArrayList;
 
 public final class Menu_Pnp {
 
-	private final static String MENUPNP[] = {
-			"Scegli cosa fare:",
-			"___________________________",
-			"1:Crea una PNp a partire da una PN",
-			"2:Visualizza una PNp",
-			"3:Salva una o più PNp",
-			"4:Simula l'evoluzione di una PNp da file",
-			"0:Indietro",
-			"___________________________",
-	};
 	private final static String MESSAGGI_MENU[] = {
 			"da quale rete vuoi partire?",
 			"Come vuoi chiamare questa PNp?",
 			"Esiste già una Pnp con questo nome",
 			"Questa PNP esiste già",
 	};
-	private static final String NO_RETI_V = "Non ci sono PNp da visualizzare";
-	private static final String NO_RETI_S = "Non ci sono PNp da salvare";
 	private static final String NO_P_RETI ="Non ci sono reti di petri da cui partire";
 	
 	/**
@@ -59,34 +47,7 @@ public final class Menu_Pnp {
 		else
 			System.out.println(MESSAGGI_MENU[3]);
 	}	
-		
-	/**
-	 * Controlla se una nuova rete di petri priorizzata è gia presente nella lista di reti di petri priorizzate
-	 * @param toAdd
-	 * @param pnps
-	 * @return
-	 */
-	private static boolean pnpExistence(Priority_network toAdd, ArrayList<Priority_network> pnps) {
-			
-		if (pnps.size() == 0) {
-			return false;
-		}
-		for (Priority_network pnp : pnps) {
-			if(pnpSingleCheck(pnp, toAdd))
-				return true;
-		}
-		return false;
-	}
 	
-	private static boolean pnpSingleCheck(Priority_network pnp, Priority_network toCheck) {
-		
-		if (toCheck.getFatherNetId() == pnp.getFatherNetId()){
-			if(pnp.getName().equals(toCheck.getName()))
-				return true;
-		}
-		return false;
-	}
-		
 	private static boolean checkPNpExistence (String name, ArrayList<Priority_network> pnp) {
 		
 		if(pnp.size()>0) {
