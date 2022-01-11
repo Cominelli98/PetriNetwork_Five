@@ -34,7 +34,7 @@ public final class Menu_Salva {
 		case 1:
 			System.out.println(RICHIESTA_SALVATAGGIO);
 			System.out.println(Menu_Visua.getNetworksList(ns));
-			int i = Utility.readLimitedInt(0, ns.size());
+			int i = Utility.readLimitedInt(0, ns.size()-1);
 			saveNetOnFile(ns.get(i));
 			break;
 		case 2:
@@ -63,7 +63,7 @@ public final class Menu_Salva {
 		case 1:	//Salva una rete di petri
 			System.out.println(RICHIESTA_SALVATAGGIO);
 			System.out.println(Menu_Visua.getPNetworksList(pn));
-			int i = Utility.readLimitedInt(0, pn.size());
+			int i = Utility.readLimitedInt(0, pn.size()-1);
 			saveNetOnFile(pn.get(i));
 			break;
 		case 2: // salva tutte le reti di petri 
@@ -92,7 +92,7 @@ public final class Menu_Salva {
 		case 1:	//Salva su file una rete di petri priorizzata
 			System.out.println(RICHIESTA_SALVATAGGIO);
 			System.out.println(Menu_Visua.getPnpList(pnp));
-			int i = Utility.readLimitedInt(0, pnp.size());
+			int i = Utility.readLimitedInt(0, pnp.size()-1);
 			saveNetOnFile(pnp.get(i));
 			break;
 		case 2:	//salva su file tutte le reti di petri priorizzate
